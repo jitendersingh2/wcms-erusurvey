@@ -13,7 +13,7 @@
 
             'ngRoute',
             'erusurvey.config',
-            'erusurvey.services.homeFactory',
+            'erusurvey.services.trackFactory',
             'erusurvey.controllers.homeCtrl'
 
         ])

@@ -5,7 +5,7 @@
 
     /**
      * @ngdoc service
-     * @name erusurvey.services.dataCaptureService. : dataCaptureService
+     * @name bcbsnc.member.billingPayment.services.dataCaptureService. : dataCaptureService
      * @description Emits events to the Data Capture REST API, TouchPoint History, with AngularJS.
      * @requires $window A reference to the browser's window object {@link https://docs.angularjs.org/api/ng/service/$window}
      * @requires $http a core AngularJS service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. {@link https://docs.angularjs.org/api/ng/service/$http}
@@ -29,7 +29,7 @@
                 /**
                  * @ngdoc method
                  * @name track
-                 * @methodOf bcbsnc.member.erusurvey.services.dataCaptureService. : dataCaptureService
+                 * @methodOf erusurvey.services.dataCaptureService. : dataCaptureService
                  * @description Tracks an event.
                  * @param {String} code code
                  * @param {Object} data data
@@ -42,7 +42,7 @@
 
                     var eventObject = {
 
-                        transactionStatus: (passData.success ? 'SUCCESS' : 'FAILURE' ),
+                        transactionStatus: passData.success ? 'SUCCESS' : 'FAILURE',
                         touchpointTransactionContextCode: code
                     };
 

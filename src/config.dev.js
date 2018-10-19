@@ -13,7 +13,7 @@
         .constant('config', {
 
             namespace: 'erusurvey',
-            analytics: false,
+            analytics: true,
             debug: true,
             appUrlRoot: '/members/secure/account/erusurvey/',
             servicesTimeout: 120000,

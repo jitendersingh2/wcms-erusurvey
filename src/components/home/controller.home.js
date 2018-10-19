@@ -9,15 +9,15 @@
    */
   angular
     .module("erusurvey.controllers.homeCtrl", [
-      'erusurvey.services.homeFactory'
+      'erusurvey.services.trackFactory'
     ])
     .controller("homeCtrl", [
-      "homeFactory",
+      "trackFactory",
       "config",
       "$filter",
       "$timeout",
       function(
-        homeFactory,
+        trackFactory,
         config,
         $filter,
         $timeout
@@ -261,10 +261,26 @@
         */
 
         self.printCustomizedGuide = function() {
-          var currDate = moment().format('YYYY-MM-DDTHH:mm:ssZ');
-          var surveyData = [{
+
+          self.surveyConfirmation = true;
+          
+          // Print PDF
+          var documentId = 'pdfDocument';
+          var printedContentId = 'printedCustimizedGuide';
+          var doc = document.getElementById(documentId);
+          var printedContent = document.getElementById(printedContentId).innerHTML;
+          console.log('doc- ', doc);
+          doc.contentWindow.document.body.innerHTML = printedContent;
+
+          doc.contentWindow.focus();
+          doc.contentWindow.print();
+
+          // TouchPoint Service
+          var currDate = moment().toISOString();
+          var surveyData = {
             "eventEndTimestamp":currDate,
             "eventStartTimestamp":currDate,
+            "success":"Y",
             "sourceSystemCode":"ERU",
             "touchpointTransactionContextCode":"ERSrvyCmpl",
             "transactionSuccessIndicator":"Y",
@@ -333,30 +349,10 @@
                 "identityValue":self.healthLineBlueAnswers
               }
             ]
-          }];
+          };
           console.log('printing- ', surveyData);
           // Calling touch point service
-          // homeFactory.set('ERU', surveyData);
-
-          // $http.post('https://jsonplaceholder.typicode.com/posts', surveyData)
-          //   .success(function(res) {
-          //     console.log('response- ', res);
-          //   })
-          //   .error(function(err){
-          //     console.log('error- ', err);
-          //   });
-
-          self.surveyConfirmation = true;
-
-          var documentId = 'pdfDocument';
-          var printedContentId = 'printedCustimizedGuide';
-          var doc = document.getElementById(documentId);
-          var printedContent = document.getElementById(printedContentId).innerHTML;
-          console.log('doc- ', doc);
-          doc.contentWindow.document.body.innerHTML = printedContent;
-
-          doc.contentWindow.focus();
-          doc.contentWindow.print();
+          trackFactory.set('ERSrvyCmpl', surveyData, false, true).then();
         };
 
         /*

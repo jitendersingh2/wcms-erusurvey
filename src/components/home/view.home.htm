@@ -41,10 +41,10 @@
             </span>
         </div>
         <form>
-            <input type="checkbox" name="first_Q_1" value="opt1" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Knows your health history</span><br>
-            <input type="checkbox" name="first_Q_2" value="opt2" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Helps you prevent or manage long-term conditions (like diabetes or asthma)<br>
-            <input type="checkbox" name="first_Q_3" value="opt3" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Provides regular checkups</span><br>
-            <button type="button" class="btn-blue" ng-if="!hideSubmitBtn" ng-click="surveyScope.submitFirstAnswer($event)">Next</button>
+            <input type="checkbox" name="first_Q_1" value="Knows your health history" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Knows your health history</span><br>
+            <input type="checkbox" name="first_Q_2" value="Helps you prevent or manage long-term conditions (like diabetes or asthma)" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Helps you prevent or manage long-term conditions (like diabetes or asthma)<br>
+            <input type="checkbox" name="first_Q_3" value="Helps you prevent or manage long-term conditions (like diabetes or asthma)" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Provides regular checkups</span><br>
+            <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitFirstAnswer($event)">Next</button>
         </form>
 
         <div class="answered-correctly" ng-if="surveyScope.showAnsweredCorrectly">
@@ -120,11 +120,11 @@
         </div>
 
         <form>
-            <input type="checkbox" name="first_Q_1" value="opt1" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a sudden injury and need a walk-in appointment</span><br>
-            <input type="checkbox" name="first_Q_2" value="opt2" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need care when your doctor’s office is closed</span><br>
-            <input type="checkbox" name="first_Q_3" value="opt3" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need a flu shot</span><br>
-            <input type="checkbox" name="first_Q_3" value="opt4" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a minor health issue, like a sinus infection or the flu</span><br>
-            <button type="button" class="btn-blue" ng-if="!hideSubmitBtn" ng-click="surveyScope.submitThirdAnswer($event)">Next</button>
+            <input type="checkbox" name="first_Q_1" value="Have a sudden injury and need a walk-in appointment" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a sudden injury and need a walk-in appointment</span><br>
+            <input type="checkbox" name="first_Q_2" value="Need care when your doctor’s office is closed" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need care when your doctor’s office is closed</span><br>
+            <input type="checkbox" name="first_Q_3" value="Need a flu shot" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need a flu shot</span><br>
+            <input type="checkbox" name="first_Q_3" value="Have a minor health issue, like a sinus infection or the flu" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a minor health issue, like a sinus infection or the flu</span><br>
+            <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitThirdAnswer($event)">Next</button>
         </form>
 
         <div class="answered-correctly" ng-if="surveyScope.showThirdAnsweredCorrectly || surveyScope.showThirdAnsweredInCorrectly">
@@ -150,7 +150,7 @@
         <form>
             <input type="radio" name="careCenter" value="Yes" ng-click="surveyScope.selectFourthAnswer($event)"><span class="input-label"> Yes</span><br>
             <input type="radio" name="careCenter" value="No" ng-click="surveyScope.selectFourthAnswer($event)"><span class="input-label"> No</span><br>
-            <button type="button" class="btn-blue" ng-if="!hideSubmitBtn" ng-click="surveyScope.submitFourthAnswer($event)">Next</button>
+            <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitFourthAnswer($event)">Next</button>
         </form>
         <div ng-if="surveyScope.fourthAnsweredNo">
             <br>
