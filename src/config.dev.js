@@ -18,7 +18,8 @@
             appUrlRoot: '/members/secure/account/erusurvey/',
             servicesTimeout: 120000,
             services: {
-                dataCapture: '/members/services/sec/touchpoints'
+                dataCapture: '/members/services/sec/touchpoints',
+                userInfo: '/members/secure/data/erusurvey.json'
             },
             partials: {
                 viewHome: '/components/home/view.home.htm',

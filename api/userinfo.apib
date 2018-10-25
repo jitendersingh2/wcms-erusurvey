@@ -1,0 +1,50 @@
+FORMAT: 1A
+
+# User Info Data for ERU Survey
+
+Service for touchpoint history. (https://www.bcbsnc.com/members)
+
+## Status [/members/secure/data/erusurvey.json]
+
+### Send data capture details [GET]
+
++ Request (application/json)
+
+  + Headers
+
+            Accept: application/json
+
+  + Body
+        
+            {
+                
+            }
+
++ Response 200 (application/json)
+
+  + Headers
+
+            Accept: application/json
+
+  + Body
+
+            {
+              "personId" : "2213540",
+              "firstName": "Topper",
+              "lastName": "Larks",
+              "timestamp": "2018-10-25 10:40:41-0400",
+              "telehealth": "false",
+              "healthLineBlue": "true"
+            }
+
++ Response 401 (application/json)
+
+  + Headers
+
+            Accept: application/json
+
+  + Body
+
+            {
+            
+            }

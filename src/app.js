@@ -14,6 +14,7 @@
             'ngRoute',
             'erusurvey.config',
             'erusurvey.services.trackFactory',
+            'erusurvey.services.userInfoService',
             'erusurvey.controllers.homeCtrl'
 
         ])

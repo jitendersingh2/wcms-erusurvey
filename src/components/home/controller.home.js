@@ -9,24 +9,21 @@
    */
   angular
     .module("erusurvey.controllers.homeCtrl", [
+      'erusurvey.services.userInfoService',
       'erusurvey.services.trackFactory'
     ])
     .controller("homeCtrl", [
+      "userInfoService",
       "trackFactory",
       "config",
-      "$filter",
-      "$timeout",
+      "$http",
       function(
+        userInfoService,
         trackFactory,
         config,
-        $filter,
-        $timeout
+        $http
       ) {
         var self = this;
-        
-        //   self.isMemberHasTeleHealth =$wo.features.telehealth;
-        //   self.isMemberHasHealthLineBlue = $wo.features.healthLineBlue;
-        //   self.isMemberRewardble = $wo.features.blueRewards == 'Y';
         
         self.isMemberHasTeleHealth = true;
         self.isMemberHasHealthLineBlue = true;
@@ -42,6 +39,19 @@
         self.surveyConfirmation = false;
         self.printCustomizedGuide = false;
         self.hideSubmitBtn = false;
+
+        /*
+        * Get userinfo here 
+        */
+        userInfoService.getUserInfo()
+          .then(function(response) {
+            console.log('response2- ', response);
+            var userInfo = response;
+            self.isMemberHasTeleHealth = userInfo["telehealth"] === "true" ? true : false;
+            self.isMemberHasHealthLineBlue = userInfo["healthLineBlue"] === "true" ? true : false;
+          }, function(error) {
+            console.log('error- ', error);
+          });
 
         /*
         * 1st Question
@@ -171,6 +181,7 @@
         };
 
         self.next5 = function (e) {
+          console.log(self);
           e.preventDefault();
           self.hideSubmitBtn = false;
           self.fourthQPage = false;
