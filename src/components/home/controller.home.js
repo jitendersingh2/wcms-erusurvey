@@ -318,11 +318,7 @@
               },
               {
                 "identityName":"haveRegulardoctorForRoutineCheckups",
-                "identityValue":self.secondAnswer
-              },
-              {
-                "identityName":"haveRegulardoctorForRoutineCheckupYES",
-                "identityValue":self.secondAnswer === 'YES' ? `'DoctorName':${"'"+self.doctorName+"'"},'PhoneNumber':${"'"+self.doctorPhoneNumber+"'"},'OfficeHours':${"'"+self.officeHours+"'"},'AfterOurHours':${"'"+self.afterHoursNumber+"'"}` : ''
+                "identityValue":self.secondAnswer === 'YES' ? `YES,'DoctorName':${"'"+self.doctorName+"'"},'PhoneNumber':${"'"+self.doctorPhoneNumber+"'"},'OfficeHours':${"'"+self.officeHours+"'"},'AfterOurHours':${"'"+self.afterHoursNumber+"'"}` : 'NO'
               },
               {
                 "identityName":"whyGoToConvenienceCareOrUrgentCareCenter",
@@ -330,11 +326,7 @@
               },
               {
                 "identityName":"whichUrgentcareCenterClosestToYourHome",
-                "identityValue":self.fourthAnswer
-              },
-              {
-                "identityName":"whichUrgentcareCenterClosestToYourHomeYes",
-                "identityValue": self.fourthAnswer === 'YES' ? `'NameLocation':${"'"+self.careCenterNameAndLocation+"'"},'PhoneNumber':${"'"+self.careCenterPhoneNumber+"'"},'Hours':${"'"+self.careCenterOpeningHours+"'"}` : ''  
+                "identityValue": self.fourthAnswer === 'YES' ? `YES,'NameLocation':${"'"+self.careCenterNameAndLocation+"'"},'PhoneNumber':${"'"+self.careCenterPhoneNumber+"'"},'Hours':${"'"+self.careCenterOpeningHours+"'"}` : 'NO'  
               },
               {
                 "identityName":"healthIssuesHandledByTelehealthConsultant",
