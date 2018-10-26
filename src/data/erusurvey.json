@@ -7,15 +7,11 @@
     #else
         "personId" : ""
     #end
-    #if($loggedInMember.getAttribute('RUID'))
-        "ruid" : "${loggedInMember.getAttribute('RUID')}"
-    #else
-        "ruid" : ""
-    #end
     ,"firstName": "${loggedInMember.defaultMember.firstName}"
     ,"lastName": "${loggedInMember.defaultMember.lastName}"
     ,"externalMemberId": "${loggedInMember.defaultMember.externalID}"
     ,"userID": "${loggedInMember.defaultMember.userID}"
+    ,"ruid": "${loggedInMember.defaultMember.ruid}"
     ,"timestamp": "${date.get('yyyy-MM-dd HH:mm:ssZ')}",
     "telehealth": "$wo.feature.telehealth",
     "healthLineBlue": "$wo.feature.healthLineBlue",
