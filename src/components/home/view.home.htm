@@ -1,16 +1,6 @@
-<!-- #if($wo.feature.blueRewards == 'Y')
-#end
-#if($wo.feature.telehealth)
-#end
-#if($wo.feature.healthLineBlue)
-#end -->
 <div id="survey-first-ques-container" class="animated fadeIn" ng-controller="homeCtrl as surveyScope">
     <p class="header">2019 ER Utilization Rewardable Activity Survey</p>
-    <p class="header-content" ng-if="!surveyScope.rewardPage && surveyScope.isMemberRewardble">
-        Earn Blue Rewards points and get your own personalized Quick Reference Guide when you test your knowledge
-        about choosing the most appropriate place to get care.
-    </p>
-    <p class="header-content" ng-if="!surveyScope.rewardPage && !surveyScope.isMemberRewardble">
+    <p class="header-content" ng-if="!surveyScope.rewardPage">
         Do you know when it’s best to go to an urgent care center or an emergency department?
         Test your knowledge about all of your care options and get a personalized Quick Reference Guide.
     </p>
@@ -24,10 +14,10 @@
         <span ng-if="surveyScope.isMemberRewardble">Ready to earn your reward? </span>Just click the button below to submit your survey and create your personalized Quick Reference Guide.
         Print it and hang it up so you’ll have a handy reminder of your care options!
     </p>
-    <p class="finish-header header-content" ng-if="surveyScope.rewardPage && surveyScope.isMemberRewardble">
+    <!-- <p class="finish-header header-content" ng-if="surveyScope.rewardPage && surveyScope.isMemberRewardble">
         <img src="/assets/members/secure/apps/erusurvey/images/information-solid.png" alt="Info Solid Icon">
         <span class="finish-info">(Please allow 4 to 6 weeks for your reward to be processed. You’ll get a notification once it’s available.)</span>
-    </p>
+    </p> -->
 
     <!-- First Question -->
     <div class="first-question" ng-if="surveyScope.firstQPage">
@@ -41,9 +31,9 @@
             </span>
         </div>
         <form>
-            <input type="checkbox" name="first_Q_1" value="Knows your health history" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Knows your health history</span><br>
-            <input type="checkbox" name="first_Q_2" value="Helps you prevent or manage long-term conditions (like diabetes or asthma)" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Helps you prevent or manage long-term conditions (like diabetes or asthma)<br>
-            <input type="checkbox" name="first_Q_3" value="Helps you prevent or manage long-term conditions (like diabetes or asthma)" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Provides regular checkups</span><br>
+            <input type="checkbox" name="first_Q_1" value="'Knows your health history'" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Knows your health history</span><br>
+            <input type="checkbox" name="first_Q_2" value="'Helps you prevent or manage long-term conditions (like diabetes or asthma)'" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Helps you prevent or manage long-term conditions (like diabetes or asthma)<br>
+            <input type="checkbox" name="first_Q_3" value="'Helps you prevent or manage long-term conditions (like diabetes or asthma)'" ng-click="surveyScope.insertFirstAnswers($event)"><span class="input-label">Provides regular checkups</span><br>
             <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitFirstAnswer($event)">Next</button>
         </form>
 
@@ -78,8 +68,8 @@
     <div class="second-question" ng-if="surveyScope.secondQPage">
         <p class="header-content">Do you have a regular doctor that you go to for routine checkups?</p><br>
         <form>
-            <input type="radio" name="routineCheckUps" value="Yes" ng-click="surveyScope.selectSecondAnswer($event)"><span class="input-label"> Yes</span><br>
-            <input type="radio" name="routineCheckUps" value="No" ng-click="surveyScope.selectSecondAnswer($event)"><span class="input-label"> No</span><br>
+            <input type="radio" name="routineCheckUps" value="YES" ng-click="surveyScope.selectSecondAnswer($event)"><span class="input-label"> Yes</span><br>
+            <input type="radio" name="routineCheckUps" value="NO" ng-click="surveyScope.selectSecondAnswer($event)"><span class="input-label"> No</span><br>
             <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitSecondAnswer($event)">Next</button>
         </form>
         <div ng-if="surveyScope.secondAnsweredNo">
@@ -120,10 +110,10 @@
         </div>
 
         <form>
-            <input type="checkbox" name="first_Q_1" value="Have a sudden injury and need a walk-in appointment" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a sudden injury and need a walk-in appointment</span><br>
-            <input type="checkbox" name="first_Q_2" value="Need care when your doctor’s office is closed" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need care when your doctor’s office is closed</span><br>
-            <input type="checkbox" name="first_Q_3" value="Need a flu shot" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need a flu shot</span><br>
-            <input type="checkbox" name="first_Q_3" value="Have a minor health issue, like a sinus infection or the flu" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a minor health issue, like a sinus infection or the flu</span><br>
+            <input type="checkbox" name="first_Q_1" value="'Have a sudden injury and need a walk-in appointment'" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a sudden injury and need a walk-in appointment</span><br>
+            <input type="checkbox" name="first_Q_2" value="'Need care when your doctor’s office is closed'" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need care when your doctor’s office is closed</span><br>
+            <input type="checkbox" name="first_Q_3" value="'Need a flu shot'" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Need a flu shot</span><br>
+            <input type="checkbox" name="first_Q_3" value="'Have a minor health issue, like a sinus infection or the flu'" ng-click="surveyScope.selectThirdAnswers($event)"><span class="input-label">Have a minor health issue, like a sinus infection or the flu</span><br>
             <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitThirdAnswer($event)">Next</button>
         </form>
 
@@ -148,8 +138,8 @@
     <div class="second-question" ng-if="surveyScope.fourthQPage">
         <p class="header-content">Do you know which urgent care center is closest to your home?</p><br>
         <form>
-            <input type="radio" name="careCenter" value="Yes" ng-click="surveyScope.selectFourthAnswer($event)"><span class="input-label"> Yes</span><br>
-            <input type="radio" name="careCenter" value="No" ng-click="surveyScope.selectFourthAnswer($event)"><span class="input-label"> No</span><br>
+            <input type="radio" name="careCenter" value="YES" ng-click="surveyScope.selectFourthAnswer($event)"><span class="input-label"> Yes</span><br>
+            <input type="radio" name="careCenter" value="NO" ng-click="surveyScope.selectFourthAnswer($event)"><span class="input-label"> No</span><br>
             <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitFourthAnswer($event)">Next</button>
         </form>
         <div ng-if="surveyScope.fourthAnsweredNo">
@@ -191,11 +181,11 @@
         </div>
 
         <form>
-            <input type="checkbox" name="telehealth" value="Seasonal Allergies" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Seasonal Allergies</span><br>
-            <input type="checkbox" name="telehealth" value="Rash" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Rash</span><br>
-            <input type="checkbox" name="telehealth" value="Chest Pain" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Chest Pain</span><br>
-            <input type="checkbox" name="telehealth" value="Cough" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Cough</span><br>
-            <input type="checkbox" name="telehealth" value="Headache" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Headache</span><br>
+            <input type="checkbox" name="telehealth" value="'Seasonal Allergies'" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Seasonal Allergies</span><br>
+            <input type="checkbox" name="telehealth" value="'Rash'" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Rash</span><br>
+            <input type="checkbox" name="telehealth" value="'Chest Pain'" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Chest Pain</span><br>
+            <input type="checkbox" name="telehealth" value="'Cough'" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Cough</span><br>
+            <input type="checkbox" name="telehealth" value="'Headache'" ng-click="surveyScope.selectTeleHealthAnswers($event)"><span class="input-label">Headache</span><br>
             <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitTeleHealthAnswers($event)">Next</button>
         </form>
 
@@ -225,10 +215,10 @@
         </div>
 
         <form>
-            <input type="checkbox" name="telehealth" value="Member ID Card" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Member ID Card</span><br>
-            <input type="checkbox" name="telehealth" value="Blue Cross NC mobile app" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Blue Cross NC mobile app</span><br>
-            <input type="checkbox" name="telehealth" value="Blue Connect" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Blue Connect<sup>SM</sup></span><br>
-            <input type="checkbox" name="telehealth" value="Benefit Booklet" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Benefit Booklet</span><br>
+            <input type="checkbox" name="telehealth" value="'Member ID Card'" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Member ID Card</span><br>
+            <input type="checkbox" name="telehealth" value="'Blue Cross NC mobile app'" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Blue Cross NC mobile app</span><br>
+            <input type="checkbox" name="telehealth" value="'Blue Connect'" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Blue Connect<sup>SM</sup></span><br>
+            <input type="checkbox" name="telehealth" value="'Benefit Booklet'" ng-click="surveyScope.selectHealthLineBlueAnswers($event)"><span class="input-label">Benefit Booklet</span><br>
             <button type="button" class="btn-blue" ng-if="!surveyScope.hideSubmitBtn" ng-click="surveyScope.submitHealthLineBlueAnswers($event)">Next</button>
         </form>
 
@@ -280,13 +270,7 @@
         </button>
 
         <div class="survey-confirm-msg" ng-if="surveyScope.surveyConfirmation">
-            <!-- If reward -->
-            <p ng-if="surveyScope.isMemberRewardble">
-                Thank you. You have completed the survey.
-                We’ll notify you when your Blue Reward points are processed. (Please allow two to four weeks for processing.)
-            </p>
-            <!-- If no reward -->
-            <p ng-if="!surveyScope.isMemberRewardble">
+            <p>
                 Thank you. You have completed the survey. Now use your personalized Quick Reference Guide when you need it.
             </p>
         </div>

@@ -23,6 +23,7 @@
         config,
         $http
       ) {
+        var userInfo;
         var self = this;
         
         self.isMemberHasTeleHealth = true;
@@ -46,7 +47,7 @@
         userInfoService.getUserInfo()
           .then(function(response) {
             console.log('response2- ', response);
-            var userInfo = response;
+            userInfo = response;
             self.isMemberHasTeleHealth = userInfo["telehealth"] === "true" ? true : false;
             self.isMemberHasHealthLineBlue = userInfo["healthLineBlue"] === "true" ? true : false;
           }, function(error) {
@@ -94,8 +95,8 @@
         self.selectSecondAnswer = function(e) {
           self.secondAnswer = e.target.value;
           if (self.hideSubmitBtn) {
-            self.secondAnsweredYes = self.secondAnswer === 'Yes';
-            self.secondAnsweredNo = self.secondAnswer === 'No';
+            self.secondAnsweredYes = self.secondAnswer === 'YES';
+            self.secondAnsweredNo = self.secondAnswer === 'NO';
           }
         };
 
@@ -104,9 +105,9 @@
           if (self.secondAnswer === "") {
             return true;
           }
-          if (self.secondAnswer === "Yes") {
+          if (self.secondAnswer === "YES") {
             self.secondAnsweredYes = true;
-          } else if (self.secondAnswer === "No") {
+          } else if (self.secondAnswer === "NO") {
             self.secondAnsweredNo = true;
           }
 
@@ -161,8 +162,8 @@
         self.selectFourthAnswer = function(e) {
           self.fourthAnswer = e.target.value;
           if (self.hideSubmitBtn) {
-            self.fourthAnsweredYes = self.fourthAnswer === 'Yes';
-            self.fourthAnsweredNo = self.fourthAnswer === 'No';
+            self.fourthAnsweredYes = self.fourthAnswer === 'YES';
+            self.fourthAnsweredNo = self.fourthAnswer === 'NO';
           }
         };
 
@@ -171,9 +172,9 @@
           if (self.fourthAnswer === "") {
             return true;
           }
-          if (self.fourthAnswer === "Yes") {
+          if (self.fourthAnswer === "YES") {
             self.fourthAnsweredYes = true;
-          } else if (self.fourthAnswer === "No") {
+          } else if (self.fourthAnswer === "NO") {
             self.fourthAnsweredNo = true;
           }
 
@@ -289,34 +290,31 @@
           // TouchPoint Service
           var currDate = moment().toISOString();
           var surveyData = {
+            success: "Y",
             "eventEndTimestamp":currDate,
             "eventStartTimestamp":currDate,
-            "success":"Y",
-            "sourceSystemCode":"ERU",
-            "touchpointTransactionContextCode":"ERSrvyCmpl",
-            "transactionSuccessIndicator":"Y",
             "partyIdentification":[
               {
                 "identityName":"externalMemberId",
-                "identityValue": '' //bcbsnc.thisMember.loggedInMember.key
+                "identityValue":userInfo ? userInfo['externalMemberId'] : ''
               },
               {
                 "identityName":"personId",
-                "identityValue":"13494237"
+                "identityValue":userInfo ? userInfo['personId'] : ''
               },
               {
                 "identityName":"userId",
-                "identityValue": '' //bcbsnc.thisMember.loggedInMember.userID
+                "identityValue":userInfo ? userInfo['userID'] : ''
               },
               {
                 "identityName":"ruid",
-                "identityValue": '' //bcbsnc.dashboard.RUID
+                "identityValue":userInfo ? userInfo['ruid'] : ''
               }
             ],
             "extensionDataElement":[
               {
                 "identityName":"ImportanceofRegularDoctor",
-                "identityValue":self.firstAnswers
+                "identityValue":self.firstAnswers.length > 0 ? self.firstAnswers.join(',') : ''
               },
               {
                 "identityName":"haveRegulardoctorForRoutineCheckups",
@@ -324,18 +322,11 @@
               },
               {
                 "identityName":"haveRegulardoctorForRoutineCheckupYES",
-                "identityValue":[
-                  {
-                  "DoctorName":self.doctorName,
-                  "PhoneNumber":self.doctorPhoneNumber,
-                  "OfficeHours":self.officeHours,
-                  "AfterOurHours":self.afterHoursNumber
-                  }
-                ]
+                "identityValue":self.secondAnswer === 'YES' ? `'DoctorName':${"'"+self.doctorName+"'"},'PhoneNumber':${"'"+self.doctorPhoneNumber+"'"},'OfficeHours':${"'"+self.officeHours+"'"},'AfterOurHours':${"'"+self.afterHoursNumber+"'"}` : ''
               },
               {
                 "identityName":"whyGoToConvenienceCareOrUrgentCareCenter",
-                "identityValue":self.thirdAnswers
+                "identityValue":self.thirdAnswers.length > 0 ? self.thirdAnswers.join(',') : ''
               },
               {
                 "identityName":"whichUrgentcareCenterClosestToYourHome",
@@ -343,27 +334,21 @@
               },
               {
                 "identityName":"whichUrgentcareCenterClosestToYourHomeYes",
-                "identityValue":[
-                  {
-                  "NameLocation":self.careCenterNameAndLocation,
-                  "PhoneNumber":self.careCenterPhoneNumber,
-                  "Hours":self.careCenterOpeningHours
-                  }
-                ]
+                "identityValue": self.fourthAnswer === 'YES' ? `'NameLocation':${"'"+self.careCenterNameAndLocation+"'"},'PhoneNumber':${"'"+self.careCenterPhoneNumber+"'"},'Hours':${"'"+self.careCenterOpeningHours+"'"}` : ''  
               },
               {
                 "identityName":"healthIssuesHandledByTelehealthConsultant",
-                "identityValue":self.teleHealthAnswers
+                "identityValue":self.teleHealthAnswers.length > 0 ? self.teleHealthAnswers.join(',') : ''
               },
               {
                 "identityName":"phoneNumberForOurNurseSupportLine",
-                "identityValue":self.healthLineBlueAnswers
+                "identityValue":self.healthLineBlueAnswers.length > 0 ? self.healthLineBlueAnswers.join(',') : ''
               }
             ]
           };
           console.log('printing- ', surveyData);
           // Calling touch point service
-          trackFactory.set('ERSrvyCmpl', surveyData, false, true).then();
+          trackFactory.set('SURVEY_ACTIVITY_CENTER', surveyData, false, true);
         };
 
         /*
