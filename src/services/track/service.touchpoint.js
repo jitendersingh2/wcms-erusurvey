@@ -5,7 +5,7 @@
 
     /**
      * @ngdoc service
-     * @name bcbsnc.member.billingPayment.services.dataCaptureService. : dataCaptureService
+     * @name erusurvey.services.dataCaptureService. : dataCaptureService
      * @description Emits events to the Data Capture REST API, TouchPoint History, with AngularJS.
      * @requires $window A reference to the browser's window object {@link https://docs.angularjs.org/api/ng/service/$window}
      * @requires $http a core AngularJS service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. {@link https://docs.angularjs.org/api/ng/service/$http}

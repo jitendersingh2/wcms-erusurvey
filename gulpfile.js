@@ -26,7 +26,7 @@ var settings = {
 
     apiRoutes: {
 
-        '/members/services/sec/touchpoints': './api/touchpoints.apib',
+        '/members/services/sec/touchpoints'  : './api/touchpoints.apib',
         '/members/secure/data/erusurvey.json': './api/userinfo.apib'
     },
 
@@ -100,9 +100,6 @@ gulp.task('copy', ['clean'], function () {
 
     gulp.src(settings.graphicMatch, {base: settings.servePath})
         .pipe(gulp.dest(settings.dist));
-
-    //gulp.src(settings.indexMatch, {base: settings.servePath})
-    //    .pipe(gulp.dest(settings.dist));
 
     gulp.src(settings.indexMatch)
         .pipe(gulp.dest(settings.distApp));

@@ -54,12 +54,6 @@
                             typeObject      = { adobe:(adobe||false), touchpoint:(touchpoint||false) },
                             internalData    = angular.extend({ data:data, timestamp:localTimestamp }, typeObject);
 
-                        //$rootScope[scopeName] = window[namespaceConfig] = window[namespaceConfig] || {};
-                        //$rootScope[scopeName][name] = window[namespaceConfig][name] = internalData;
-
-                        //$window[namespaceConfig] = $window[namespaceConfig] || {};
-                        //$window[namespaceConfig][name] = internalData;
-
                         internalCache = internalCache || {};
                         internalCache[name] = internalData;
 

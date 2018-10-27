@@ -28,7 +28,7 @@
                 /**
                  * @ngdoc method
                  * @name emitEvent
-                 * @methodOf bcbsnc.member.billingPayment.services.adobe-analytics. : adobeAnalyticsService
+                 * @methodOf erusurvey.services.adobe-analytics. : adobeAnalyticsService
                  * @description Stores data against the global window object.
                  * @param {String} name name
                  * @param {*} data data
@@ -46,9 +46,6 @@
 
                         data.eventId = name;
                     }
-
-                    //$rootScope.$emit(name, data);
-                    //$rootScope.$broadcast(name, data);
 
                     if (!(adobeNamespace in $window)) {
 

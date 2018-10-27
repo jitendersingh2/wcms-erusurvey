@@ -23,7 +23,6 @@
             'config',
             function ($routeProvider, config) {
 
-
                 $routeProvider.
                     when ('/', {
                         templateUrl: config.partials.viewHome,

@@ -2,7 +2,7 @@
   "use strict";
 
   /**
-   * Home/Account Summary view controller.
+   * Home/ERU Survey view controller.
    *
    * @namespace Controllers
    * @class homeCtrl
@@ -16,12 +16,10 @@
       "userInfoService",
       "trackFactory",
       "config",
-      "$http",
       function(
         userInfoService,
         trackFactory,
-        config,
-        $http
+        config
       ) {
         var userInfo;
         var self = this;
@@ -46,7 +44,6 @@
         */
         userInfoService.getUserInfo()
           .then(function(response) {
-            console.log('response2- ', response);
             userInfo = response;
             self.isMemberHasTeleHealth = userInfo["telehealth"] === "true" ? true : false;
             self.isMemberHasHealthLineBlue = userInfo["healthLineBlue"] === "true" ? true : false;
@@ -101,7 +98,7 @@
         };
 
         self.submitSecondAnswer = function(e) {
-                e.preventDefault();
+          e.preventDefault();
           if (self.secondAnswer === "") {
             return true;
           }
@@ -127,7 +124,7 @@
         self.showThirdAnsweredCorrectly = false;
         self.showThirdAnsweredInCorrectly = false;
         self.thirdAnswers = [];
-            self.selectThirdAnswers = function(e) {
+        self.selectThirdAnswers = function(e) {
           var val = e.target.value;
           if (e.target.checked) {
             self.thirdAnswers.push(val);
@@ -136,8 +133,8 @@
           }
         };
 
-            self.submitThirdAnswer = function(e) {
-                e.preventDefault();
+        self.submitThirdAnswer = function(e) {
+          e.preventDefault();
           if (self.thirdAnswers.length === 4) {
             self.showThirdAnsweredCorrectly = true;
           } else {
@@ -168,7 +165,7 @@
         };
 
         self.submitFourthAnswer = function(e) {
-                e.preventDefault();
+          e.preventDefault();
           if (self.fourthAnswer === "") {
             return true;
           }
@@ -182,7 +179,6 @@
         };
 
         self.next5 = function (e) {
-          console.log(self);
           e.preventDefault();
           self.hideSubmitBtn = false;
           self.fourthQPage = false;
@@ -203,7 +199,7 @@
         self.showTeleHealthAnsweredCorrectly = false;
         self.showTeleHealthAnsweredInCorrectly = false;
         self.teleHealthAnswers = [];
-            self.selectTeleHealthAnswers = function(e) {
+        self.selectTeleHealthAnswers = function(e) {
           var val = e.target.value;
           if (e.target.checked) {
             self.teleHealthAnswers.push(val);
@@ -212,8 +208,8 @@
           }
         };
 
-            self.submitTeleHealthAnswers = function(e) {
-                e.preventDefault();
+        self.submitTeleHealthAnswers = function(e) {
+          e.preventDefault();
           if (self.teleHealthAnswers.length === 0) {
             return true;
           }
@@ -242,7 +238,7 @@
         self.showHealthLineBlueAnsweredCorrectly = false;
         self.showHealthLineBlueAnsweredInCorrectly = false;
         self.healthLineBlueAnswers = [];
-            self.selectHealthLineBlueAnswers = function(e) {
+        self.selectHealthLineBlueAnswers = function(e) {
           var val = e.target.value;
           if (e.target.checked) {
             self.healthLineBlueAnswers.push(val);
@@ -251,8 +247,8 @@
           }
         };
 
-            self.submitHealthLineBlueAnswers = function(e) {
-                e.preventDefault();
+        self.submitHealthLineBlueAnswers = function(e) {
+          e.preventDefault();
           if (self.healthLineBlueAnswers.length === 4) {
             self.showHealthLineBlueAnsweredCorrectly = true;
           } else {
@@ -281,7 +277,7 @@
           var printedContentId = 'printedCustimizedGuide';
           var doc = document.getElementById(documentId);
           var printedContent = document.getElementById(printedContentId).innerHTML;
-          console.log('doc- ', doc);
+  
           doc.contentWindow.document.body.innerHTML = printedContent;
 
           doc.contentWindow.focus();
@@ -318,7 +314,7 @@
               },
               {
                 "identityName":"haveRegulardoctorForRoutineCheckups",
-                "identityValue":self.secondAnswer === 'YES' ? `YES,'DoctorName':${"'"+self.doctorName+"'"},'PhoneNumber':${"'"+self.doctorPhoneNumber+"'"},'OfficeHours':${"'"+self.officeHours+"'"},'AfterOurHours':${"'"+self.afterHoursNumber+"'"}` : 'NO'
+                "identityValue":self.secondAnswer === 'YES' ? "YES,'DoctorName':"+"'"+self.doctorName+"',"+"'PhoneNumber':"+"'"+self.doctorPhoneNumber+"',"+"'OfficeHours':"+"'"+self.officeHours+"',"+"'AfterOurHours':"+"'"+self.afterHoursNumber+"'" : 'NO'
               },
               {
                 "identityName":"whyGoToConvenienceCareOrUrgentCareCenter",
@@ -326,7 +322,7 @@
               },
               {
                 "identityName":"whichUrgentcareCenterClosestToYourHome",
-                "identityValue": self.fourthAnswer === 'YES' ? `YES,'NameLocation':${"'"+self.careCenterNameAndLocation+"'"},'PhoneNumber':${"'"+self.careCenterPhoneNumber+"'"},'Hours':${"'"+self.careCenterOpeningHours+"'"}` : 'NO'  
+                "identityValue": self.fourthAnswer === 'YES' ? "YES,'NameLocation':"+"'"+self.careCenterNameAndLocation+"',"+"'PhoneNumber':"+"'"+self.careCenterPhoneNumber+"',"+"'Hours':"+"'"+self.careCenterOpeningHours+"'" : 'NO'  
               },
               {
                 "identityName":"healthIssuesHandledByTelehealthConsultant",
@@ -338,7 +334,7 @@
               }
             ]
           };
-          console.log('printing- ', surveyData);
+
           // Calling touch point service
           trackFactory.set('SURVEY_ACTIVITY_CENTER', surveyData, false, true);
         };

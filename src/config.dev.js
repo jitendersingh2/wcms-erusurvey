@@ -22,8 +22,7 @@
                 userInfo: '/members/secure/data/erusurvey.json'
             },
             partials: {
-                viewHome: '/components/home/view.home.htm',
-                partsDir: '/components/home/partials/'
+                viewHome: '/components/home/view.home.htm'
             }
         });
 

@@ -11,14 +11,10 @@
     <p class="sub-header" ng-if="surveyScope.healthLineBluePage"><img src="/assets/members/secure/apps/erusurvey/images/doctor-nurse.png" alt="Doctor-Nurse Icon"> Health Line Blue<sup>SM</sup></p>
     <p class="header finish-header" ng-if="surveyScope.rewardPage">You are almost the finish line...</p>
     <p class="header-content" ng-if="surveyScope.rewardPage">
-        <span ng-if="surveyScope.isMemberRewardble">Ready to earn your reward? </span>Just click the button below to submit your survey and create your personalized Quick Reference Guide.
+        Just click the button below to submit your survey and create your personalized Quick Reference Guide.
         Print it and hang it up so you’ll have a handy reminder of your care options!
     </p>
-    <!-- <p class="finish-header header-content" ng-if="surveyScope.rewardPage && surveyScope.isMemberRewardble">
-        <img src="/assets/members/secure/apps/erusurvey/images/information-solid.png" alt="Info Solid Icon">
-        <span class="finish-info">(Please allow 4 to 6 weeks for your reward to be processed. You’ll get a notification once it’s available.)</span>
-    </p> -->
-
+    
     <!-- First Question -->
     <div class="first-question" ng-if="surveyScope.firstQPage">
         <div class="sub-header-title">
@@ -202,7 +198,7 @@
         </div>
     </div>
 
-        <!-- Health Line Blue -->
+    <!-- Health Line Blue -->
     <div class="first-question" ng-if="surveyScope.healthLineBluePage">
         <div class="sub-header-title">
             <span class="content">
@@ -263,10 +259,7 @@
         <br>
 
         <button type="button" class="btn-blue submit-2nd-Q" ng-click="surveyScope.printCustomizedGuide()">
-            <!-- If reward -->
-            <span ng-if="surveyScope.isMemberRewardble">My Guide and Earn Reward</span>
-            <!-- If no reward -->
-            <span ng-if="!surveyScope.isMemberRewardble">Create My Quick Reference Guide</span>
+            <span>Create My Quick Reference Guide</span>
         </button>
 
         <div class="survey-confirm-msg" ng-if="surveyScope.surveyConfirmation">
@@ -275,6 +268,7 @@
             </p>
         </div>
     </div>
+
     <!-- Print PDF Content  -->
     <iframe
         id="pdfDocument"
@@ -282,7 +276,6 @@
         height="100%" />
 
     <div id="printedCustimizedGuide" style="display: none;">
-    <!-- <div id="printedCustimizedGuide" style="font-family: Arial;margin-top: -12px;"> -->
         <div style="font-family: Arial;margin-top: -12px;">
             <div class="first-header" style="display: inline-flex;">
                 <div class="header-title-0" style="font-size: 20px;color: lightseagreen;font-weight: 600;">Quick Reference Guide</div>

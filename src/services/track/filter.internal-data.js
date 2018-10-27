@@ -19,7 +19,7 @@
                 /**
                  * @ngdoc method
                  * @name internalDataFilter
-                 * @methodOf bcbsnc.member.billingPayment.filters.internalDataFilter. : internalDataFilter
+                 * @methodOf erusurvey.filters.internalDataFilter. : internalDataFilter
                  * @description Parse internal data for display.
                  * @param {Object} internalData internalData
                  * @returns {Array} internalDataFilter internalDataFilter
